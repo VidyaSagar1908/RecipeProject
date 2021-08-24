@@ -8,6 +8,7 @@ import java.util.Date;
  * 
  * @author Vidya sagar
  */
+
 public class ErrorDetails {
 
 	private String timeStamp;

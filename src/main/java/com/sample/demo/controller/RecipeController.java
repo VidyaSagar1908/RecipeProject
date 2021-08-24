@@ -24,7 +24,6 @@ import com.sample.demo.util.LocalDateAndTime;
  * 
  * @author Vidya sagar
  */
-
 @RestController
 public class RecipeController {
 

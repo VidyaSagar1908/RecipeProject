@@ -26,6 +26,7 @@ public class RecipeProjectApplication {
 		SpringApplication.run(RecipeProjectApplication.class, args);
 	}
 
+	
 	/**
 	 * Swagger doc is generated using Docket and also configures with APi's related
 	 * packages

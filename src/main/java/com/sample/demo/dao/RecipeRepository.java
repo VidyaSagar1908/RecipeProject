@@ -9,6 +9,7 @@ import com.sample.demo.beans.Recipe;
  * 
  * @author Vidya sagar
  */
+
 public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
 
 }
