@@ -39,5 +39,11 @@
         
         url for Swagger docs : http://localhost:9118/swagger-ui.html
 
+
+----------------------
+
+        Added basic authentication for the APi's 
+        userName : recipe
+        password : password
          
          
