@@ -9,11 +9,21 @@ import org.springframework.web.context.request.WebRequest;
 import com.sample.demo.util.LocalDateAndTime;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
-
+/**
+ * All sort of Exceptions and errors will be handled in this class ExceptionHandlerPage
+ * 
+ * @author Vidya sagar
+ */
 @ControllerAdvice
 public class ExceptionHandlerPage {
 
-	// handle ResourceNotFound Exception
+	/**
+	 * Returns Custom Exception Details Along with the status when a record is not found
+	 * 
+	 * @param exception - message related to exception
+	 * @param request - url details will be send here
+	 * @return - custom exception details along with status NOT_FOUND
+	 */
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<?> toHandleResourceNotFound(ResourceNotFoundException exception, WebRequest request) {
 		ErrorDetails error = new ErrorDetails(new LocalDateAndTime().getLocalDateTime(), exception.getMessage(),
@@ -22,7 +32,13 @@ public class ExceptionHandlerPage {
 		return new ResponseEntity(error, HttpStatus.NOT_FOUND);
 	}
 
-	// handle All type of Exceptions
+	/**
+	 * Returns Custom Exception Details Along with the status ,related to all custom exceptions
+	 * 
+	 * @param exception - message related to exception
+	 * @param request - url details will be send here
+	 * @return - custom exception details along with status INTERNAL_SERVER_ERROR
+	 */
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<?> toHandleAll(Exception exception, WebRequest request) {
 		ErrorDetails error = new ErrorDetails(new LocalDateAndTime().getLocalDateTime(), exception.getMessage(),
@@ -31,7 +47,12 @@ public class ExceptionHandlerPage {
 		return new ResponseEntity(error, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	// to handle custom validation errors
+	/**
+	 * Returns Custom Validation Details Along with the status 
+	 * 
+	 * @param exception - message related to Validation
+	 * @return - custom exception details along with status BAD_REQUEST
+	 */
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<?> toHandleAllCustomValidations(MethodArgumentNotValidException exception) {
 		ErrorDetails error = new ErrorDetails(new LocalDateAndTime().getLocalDateTime(), "Its a validation error",

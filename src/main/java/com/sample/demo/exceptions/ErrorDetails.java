@@ -2,7 +2,12 @@ package com.sample.demo.exceptions;
 
 import java.util.Date;
 
-
+/**
+ * Data Fields are added related to custom Exceptions ,message,timeStamp and
+ * details will be set and get from here
+ * 
+ * @author Vidya sagar
+ */
 public class ErrorDetails {
 
 	private String timeStamp;
@@ -33,15 +38,17 @@ public class ErrorDetails {
 		this.details = details;
 	}
 
+	// Constructor with arguments
 	public ErrorDetails(String timeStamp, String message, String details) {
 		super();
 		this.timeStamp = timeStamp;
 		this.message = message;
 		this.details = details;
 	}
-	
+
+	// Constructor without arguments
 	public ErrorDetails() {
-		
+
 	}
 
 }

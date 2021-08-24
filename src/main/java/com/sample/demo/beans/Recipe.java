@@ -17,11 +17,15 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
-
+/**
+ * Data Fields are added in this entity which reflects recipe table
+ * 
+ * @author Vidya sagar
+ */
 @Entity
 @Table(name = "recipe")
 public class Recipe {
-
+    
 	@Id
 	@Column(name = "rec_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -117,7 +121,8 @@ public class Recipe {
 	public void setIngredients(List<Ingredient> ingredients) {
 		this.ingredients = ingredients;
 	}
-
+	
+	//Constructor with all arguments
 	public Recipe(int recipeId,
 			@NotNull @NotBlank @Size(min = 3, message = "Recipe Name should be atlease 3 characters") String recipeName,
 			@NotNull @NotBlank @Size(min = 3, max = 6, message = "Enter Recipe Type either veg or nonveg") String recipeType,
@@ -133,6 +138,7 @@ public class Recipe {
 		this.ingredients = ingredients;
 	}
 	
+	//Constructor with no argument
 	public Recipe() {
 		
 	}

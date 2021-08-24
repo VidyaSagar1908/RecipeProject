@@ -25,7 +25,11 @@ import com.sample.demo.beans.Recipe;
 import com.sample.demo.controller.RecipeController;
 import com.sample.demo.dao.RecipeRepository;
 import com.sample.demo.exceptions.ResourceNotFoundException;
-
+/**
+ * All the unit test cases are present in this class
+ * 
+ * @author Vidya sagar
+ */
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 class RecipeProjectApplicationTests {
@@ -40,7 +44,10 @@ class RecipeProjectApplicationTests {
 	@MockBean
 	RecipeRepository recipeRepository;
 
-	// Test case to check flow of getRecipesList method in controller to fetch list
+	/**
+	 * Test case to check flow of getRecipesList method in controller to fetch list
+	 * 
+	 */
 	@Test
 	public void getRecipeDetails() {
 		List<Ingredient> ingredientList = new ArrayList<Ingredient>();
@@ -58,7 +65,7 @@ class RecipeProjectApplicationTests {
 		assertEquals(recipeList, recipeController.getRecipesList());
 	}
 
-	/*
+	/**
 	 * Test case to check flow of getSingleRecipe method in controller to get single
 	 * Recipe data
 	 */
@@ -73,7 +80,7 @@ class RecipeProjectApplicationTests {
 		Assertions.assertThat(recipeDataActual.getRecipeId()).isEqualTo(recipeDataExpecting.getRecipeId());
 	}
 
-	/*
+	/**
 	 * Test case to check else condition and through custom exception in
 	 * getSingleRecipe
 	 */
@@ -91,7 +98,9 @@ class RecipeProjectApplicationTests {
 
 	}
 
-	// Test case to check flow of insertRecipe method to insert Recipe details
+	/** Test case to check flow of insertRecipe method to insert Recipe details
+	 * 
+	 */
 	@Test
 	public void insertRecipe() {
 		Recipe recipe = new Recipe(53, "icecream", "veg", 5, "22-08-2021 11:50",
@@ -100,29 +109,9 @@ class RecipeProjectApplicationTests {
 		assertEquals(recipe, recipeController.insertRecipe(recipe));
 	}
 
-	// Test case to check flow of updareRecipe method to update Recipe Details
+	
 
-	/*
-	 * @Test public void updateRecipe() { int recipeId = 43; Recipe
-	 * recipeDataExpecting = new Recipe(43, "icecream", "veg", 5,
-	 * "22-08-2021 11:50", "1.take batter,2.add water and salt,3.cook it", new
-	 * ArrayList<Ingredient>());
-	 * Mockito.when(recipeRepository.findById(recipeId)).thenReturn(Optional.of(
-	 * recipeDataExpecting));
-	 * 
-	 * 
-	 * Recipe recipeDataActual = recipeController.updateRecipe(recipeDataExpecting,
-	 * recipeId); System.out.println("recipeDataActual   " + recipeDataActual);
-	 * Assertions.assertThat(recipeDataActual.getRecipeId()).isEqualTo(
-	 * recipeDataExpecting.getRecipeId());
-	 * 
-	 * // assertEquals(recipeDataExpecting,
-	 * recipeController.updateRecipe(recipeDataExpecting, 54));
-	 * 
-	 * }
-	 */
-
-	/*
+	/**
 	 * Test case to check else condition and through custom exception in
 	 * updateRecipe
 	 */
@@ -142,7 +131,9 @@ class RecipeProjectApplicationTests {
 
 	}
 
-	// Test case to check flow of deleteRecipe in Controller to Delete Recipe
+	/** Test case to check flow of deleteRecipe in Controller to Delete Recipe
+	 * 
+	 */
 	@Test
 	public void deleteRecipe() {
 		int recipeId = 43;
@@ -154,7 +145,7 @@ class RecipeProjectApplicationTests {
 		Assertions.assertThat(recipeDataActual.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
 
-	/*
+	/**
 	 * Test case to check else condition and through custom exception in
 	 * deleteRecipe
 	 */

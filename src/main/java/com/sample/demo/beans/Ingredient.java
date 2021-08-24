@@ -9,7 +9,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
+/**
+ * Data Fields are added in this entity which reflects ingredient table
+ * 
+ * @author Vidya sagar
+ */
 @Entity
 @Table(name = "ingredient")
 public class Ingredient {
@@ -46,6 +50,7 @@ public class Ingredient {
 		return "Ingredient [ingId=" + ingId + ", name=" + name + "]";
 	}
 
+	//Constructor with all arguments
 	public Ingredient(int ingId,
 			@NotNull @NotBlank @Size(min = 3, message = "Ingredient Name should be atlease 3 characters") String name) {
 		super();
@@ -53,6 +58,7 @@ public class Ingredient {
 		this.name = name;
 	}
 
+	//Constructor with no arguments
 	public Ingredient() {
 		
 	}

@@ -15,10 +15,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sample.demo.beans.Recipe;
-import com.sample.demo.dao.IngredientRepository;
 import com.sample.demo.dao.RecipeRepository;
 import com.sample.demo.exceptions.ResourceNotFoundException;
 import com.sample.demo.util.LocalDateAndTime;
+
+/**
+ * Contains methods to perform CRUD operations for the Recipe..
+ * 
+ * @author Vidya sagar
+ */
 
 @RestController
 public class RecipeController {
@@ -26,18 +31,24 @@ public class RecipeController {
 	@Autowired
 	RecipeRepository recipeRepository;
 
-	@Autowired
-	IngredientRepository ingredientRepository;
-
-	// List of recipes will fetch here
-	@GetMapping(value = "/getRecipesList", headers = "Accept=application/json")
+	/**
+	 * Returns List of all the recipes which are present in the Recipe table
+	 * 
+	 * @return - List of Recipes
+	 */
+	@GetMapping(value = "/recipes", headers = "Accept=application/json")
 	public List<Recipe> getRecipesList() {
 		return recipeRepository.findAll();
 
 	}
 
-	// Getting a Single Recipe
-	@GetMapping(value = "/getSingleRecipe/{id}", headers = "Accept=application/json")
+	/**
+	 * Returns a single Recipe details by providing its RecipeId
+	 * 
+	 * @param id - Recipe id of the recipe
+	 * @return - single record of the recipe
+	 */
+	@GetMapping(value = "/recipe/{id}", headers = "Accept=application/json")
 	public Recipe getSingleRecipe(@PathVariable int id) {
 
 		Recipe recipe = recipeRepository.findById(id)
@@ -46,9 +57,14 @@ public class RecipeController {
 		return recipe;
 	}
 
-	
-	// Insert a recipe into the database
-	@PostMapping("/insertRecipe")
+	/**
+	 * Inserts the record of recipe details along with Ingredients and returns
+	 * Recipe record
+	 * 
+	 * @param recipe - All the details of recipe like name,type,ingredients etc.,.
+	 * @return - inserted record will be returned
+	 */
+	@PostMapping("/recipe")
 	public Recipe insertRecipe(@Valid @RequestBody Recipe recipe) {
 
 		LocalDateAndTime dateTime = new LocalDateAndTime();
@@ -59,8 +75,15 @@ public class RecipeController {
 
 	}
 
-	//Update the Recipe with id
-	@PutMapping("/updateRecipe/{id}")
+	/**
+	 * Updates the record of recipe details along with Ingredients and returns
+	 * Recipe record
+	 * 
+	 * @param recipe - All the details of recipe like name,type,ingredients etc.,.
+	 * @param id     - Recipe id of the recipe
+	 * @return - updated record will be returned
+	 */
+	@PutMapping("/recipe/{id}")
 	public Recipe updateRecipe(@Valid @RequestBody Recipe recipe, @PathVariable int id) {
 
 		Recipe existingRecipe = recipeRepository.findById(id)
@@ -76,8 +99,14 @@ public class RecipeController {
 
 	}
 
-	//Deleting a recipe with id
-	@DeleteMapping("/deleteRecipe/{id}")
+	/**
+	 * Deletes the record of recipe details along with Ingredients by using recipe
+	 * ID
+	 * 
+	 * @param id - Recipe id of the recipe
+	 * @return - returns HTTP response as OK
+	 */
+	@DeleteMapping("/recipe/{id}")
 	public ResponseEntity<Recipe> deleteRecipe(@PathVariable int id) {
 
 		Recipe existingRecipe = recipeRepository.findById(id)
