@@ -11,7 +11,6 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
  * 
  * @author Vidya sagar
  */
-@SuppressWarnings("deprecation")
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 	

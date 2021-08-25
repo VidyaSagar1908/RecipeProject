@@ -35,7 +35,7 @@ public class RecipeController {
 	 * 
 	 * @return - List of Recipes
 	 */
-	@GetMapping(value = "/recipes", headers = "Accept=application/json")
+	@GetMapping("/recipes")
 	public List<Recipe> getRecipesList() {
 		return recipeRepository.findAll();
 
@@ -47,7 +47,7 @@ public class RecipeController {
 	 * @param id - Recipe id of the recipe
 	 * @return - single record of the recipe
 	 */
-	@GetMapping(value = "/recipe/{id}", headers = "Accept=application/json")
+	@GetMapping("/recipe/{id}")
 	public Recipe getSingleRecipe(@PathVariable int id) {
 
 		Recipe recipe = recipeRepository.findById(id)
