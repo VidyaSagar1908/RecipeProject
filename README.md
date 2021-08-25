@@ -1,4 +1,4 @@
-     <h1> RecipeProject::</h1>
+      RecipeProject::
       
       It is a spring boot application , in which CRUD operations will be done using Rest Api's for Recipes..
       
